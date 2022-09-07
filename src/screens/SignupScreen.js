@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import {View, StyleSheet} from 'react-native';
 import { Input, Text, Button } from "@rneui/themed";
 import Spacer from "../components/Spacer";
+import { Context as AuthContext} from "../context/AuthContext";
+import { useContext } from "react";
 
 
 
 const SignupScreen = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const {state, signup} = useContext(AuthContext);
 
     return (
         <View style={styles.view}>
@@ -21,7 +25,7 @@ const SignupScreen = ({navigation}) => {
             <Input label="password" value={password} onChangeText={setPassword} autoCapitalize="none" autoCorrect={false} secureTextEntry/>
 
             <Spacer>
-                <Button title="Sign up" onPress={() => {navigation.navigate('Signin')}}/>
+                <Button title="Sign up" onPress={() => {signup({email, password})}}/>
                 <Button title="Go to Sign in screen" onPress={() => {navigation.navigate('Signin')}}/>
                 <Button title="Go to Main Flow" onPress={() => {navigation.navigate('MainFlow')}}/>
             </Spacer>
