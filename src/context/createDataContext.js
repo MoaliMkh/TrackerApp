@@ -21,5 +21,5 @@ export default (reducer, actions, defaultValue) => {
 
     };
 
-    return {Context}
-}
+    return {Context, Provider};
+};
