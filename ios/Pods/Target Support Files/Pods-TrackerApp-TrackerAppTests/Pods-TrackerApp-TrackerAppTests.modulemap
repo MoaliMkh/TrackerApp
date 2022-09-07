@@ -1,0 +1,6 @@
+module Pods_TrackerApp_TrackerAppTests {
+  umbrella header "Pods-TrackerApp-TrackerAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
