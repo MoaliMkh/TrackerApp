@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import { Input, Text, Button } from "@rneui/themed";
 import Spacer from "../components/Spacer";
 import { Context as AuthContext} from "../context/AuthContext";
 import { useContext } from "react";
-import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -28,8 +27,9 @@ const SignupScreen = ({navigation}) => {
             {state.errorMessage ? <Text style={{color: 'red', fontSize: 16, margin: 15}}>{state.errorMessage}</Text> : null}
             <Spacer>
                 <Button title="Sign up" onPress={() => {signup({email, password}, {navigation})}}/>
-                <Button title="Go to Sign in screen" onPress={() => {navigation.navigate('Signin')}}/>
-                <Button title="Go to Main Flow" onPress={() => {navigation.navigate('MainFlow')}}/>
+                <TouchableOpacity onPress={() => {navigation.navigate("Signin")}}>
+                    <Text style = {{color: 'blue'}}>Already have an account? Sign in instead</Text>
+                </TouchableOpacity>
             </Spacer>
 
 

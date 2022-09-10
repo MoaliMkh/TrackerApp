@@ -10,7 +10,6 @@ import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import MainFlowScreen from './src/screens/MainFlowScreen';
 import {Provider as AuthProvider} from './src/context/AuthContext';
-import { setNavigator } from './src/navigationRef';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,7 +21,7 @@ const App = () => {
       <Stack.Screen name="Signup" options={{headerShown: false}} component={SignupScreen} />
 
         <Stack.Screen name="Account" component={AccountScreen}  />
-        <Stack.Screen name="Signin" component={SigninScreen} />
+        <Stack.Screen name="Signin" component={SigninScreen} options={{headerShown: false}} />
         <Stack.Screen name="TrackCreate" component={TrackCreateScreen} />
         <Stack.Screen name="TrackDetail" component={TrackDetailScreen} />
         <Stack.Screen name="TrackList" component={TrackListScreen} />

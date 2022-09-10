@@ -40,8 +40,22 @@ const signup = (dispatch) => {
 };
 
 const signin = (dispatch) => {
-    return ({email, password}) => {
-        
+    return async ({email, password}) => {
+        try{    
+            const token = await AsyncStorage.getItem('token');
+            if (token){
+                
+
+            }
+            else{
+                dispatch({type: 'add_error', payload: 'Username or password is wrong!'})
+
+            }
+        }
+        catch(err){
+            dispatch({type: 'add_error', payload: 'Something went wrong with the signin process'})
+
+        }
     };
 
 };
