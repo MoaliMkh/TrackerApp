@@ -27,7 +27,7 @@ const SignupScreen = ({navigation}) => {
             <Input label="password" value={password} onChangeText={setPassword} autoCapitalize="none" autoCorrect={false} secureTextEntry/>
             {state.errorMessage ? <Text style={{color: 'red', fontSize: 16, margin: 15}}>{state.errorMessage}</Text> : null}
             <Spacer>
-                <Button title="Sign up" onPress={() => {signup({email, password})}}/>
+                <Button title="Sign up" onPress={() => {signup({email, password}, {navigation})}}/>
                 <Button title="Go to Sign in screen" onPress={() => {navigation.navigate('Signin')}}/>
                 <Button title="Go to Main Flow" onPress={() => {navigation.navigate('MainFlow')}}/>
             </Spacer>

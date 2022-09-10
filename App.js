@@ -10,6 +10,7 @@ import TrackDetailScreen from './src/screens/TrackDetailScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import MainFlowScreen from './src/screens/MainFlowScreen';
 import {Provider as AuthProvider} from './src/context/AuthContext';
+import { setNavigator } from './src/navigationRef';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,11 +33,14 @@ const App = () => {
   );
 };
 
-
+// const MyInput = React.forwardRef((ref) => {
+//   return <input ref={ref}/>;
+// });
 
 export default () => {
   return (
   <AuthProvider>
+    {/* <App ref={(navigator) => {setNavigator(navigator)}}/> */}
     <App />
   </AuthProvider>
   );
