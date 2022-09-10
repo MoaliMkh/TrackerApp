@@ -10,7 +10,10 @@ const SigninScreen = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {state, signin} = useContext(AuthContext);
+    const {state, signin, clearError} = useContext(AuthContext);
+
+    const unsubscribe = navigation.addListener('blur', () => {clearError()});
+
     return (
         <View style={styles.view}>
             <Spacer>

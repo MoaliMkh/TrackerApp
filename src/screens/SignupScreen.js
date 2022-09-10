@@ -6,13 +6,16 @@ import { Context as AuthContext} from "../context/AuthContext";
 import { useContext } from "react";
 
 
+ 
 
 
 const SignupScreen = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const {state, signup} = useContext(AuthContext);
+    const {state, signup, clearError} = useContext(AuthContext);
+
+    const unsubscribe = navigation.addListener('blur', () => {clearError()});
 
     return (
         <View style={styles.view}>

@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://base.loca.lt'
+    baseURL: 'https://grumpy-fish-17.loca.lt'
 });

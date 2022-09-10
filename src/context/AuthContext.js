@@ -10,8 +10,10 @@ const authReducer = (state, action) => {
     switch (action.type){
         case 'add_error':
             return {...state, errorMessage: action.payload};
-        case 'signup':
+        case 'signin':
             return {errorMessage: '', token: action.payload}
+        case 'clear_error_message':
+            return {...state, errorMessage: ''}
         default:
             return state;
     }
@@ -26,8 +28,9 @@ const signup = (dispatch) => {
         try{
             const response = await TrackerAPI.post('/signup', {email, password});
             await AsyncStorage.setItem('token', response.data.token);
-            console.log("SIGNED IN...")
-            dispatch({type: 'signup', payload: response.data.token});
+            console.log(response.data.token);
+            console.log("SIGNED IN...");
+            dispatch({type: 'signin', payload: response.data.token});
             navigation.navigate('TrackList');
         }
         catch(err){
@@ -40,17 +43,12 @@ const signup = (dispatch) => {
 };
 
 const signin = (dispatch) => {
-    return async ({email, password}) => {
-        try{    
-            const token = await AsyncStorage.getItem('token');
-            if (token){
-                
-
-            }
-            else{
-                dispatch({type: 'add_error', payload: 'Username or password is wrong!'})
-
-            }
+    return async ({email, password}, {navigation}) => {
+        try{   
+            const response = await TrackerAPI.post('/signin', {email, password});
+            await AsyncStorage.setItem('token', response.data.token);
+            dispatch({type: 'signin', payload: response.data.token});
+            navigation.navigate('TrackList');
         }
         catch(err){
             dispatch({type: 'add_error', payload: 'Something went wrong with the signin process'})
@@ -59,6 +57,11 @@ const signin = (dispatch) => {
     };
 
 };
+
+const clearError = (dispatch) => {
+    return () => {dispatch({type: 'clear_error_message'})}
+}
+
 
 const signout = (dispatch) => {
     return () => {
@@ -70,6 +73,6 @@ const signout = (dispatch) => {
 
 export const {Context, Provider} = createDataContext(
     authReducer,
-    {signup},
+    {signup, signin, signout, clearError},
     {isSignIn: false, errorMessage: '', token: null}
 );
