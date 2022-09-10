@@ -4,6 +4,8 @@ import { Input, Text, Button } from "@rneui/themed";
 import Spacer from "../components/Spacer";
 import { Context as AuthContext} from "../context/AuthContext";
 import { useContext } from "react";
+import { useNavigation } from "@react-navigation/native";
+
 
 
 
@@ -12,8 +14,6 @@ const SignupScreen = ({navigation}) => {
     const [password, setPassword] = useState("");
 
     const {state, signup} = useContext(AuthContext);
-
-    console.log(state);
 
     return (
         <View style={styles.view}>

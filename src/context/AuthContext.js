@@ -2,7 +2,6 @@ import createDataContext from "./createDataContext";
 import TrackerAPI from "../api/TrackerAPI";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { navigate } from "../navigationRef";
-import { useNavigation } from "@react-navigation/native";
 
 
 
@@ -22,7 +21,6 @@ const authReducer = (state, action) => {
 
 const signup = (dispatch) => {
 
-    // const navigation = useNavigation();
     return async ({email, password}, {navigation}) => {
 
         try{
