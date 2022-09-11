@@ -18,20 +18,20 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return(
-    <NavigationContainer>
-      <Stack.Navigator initialRoutename="SignupScreen">
+      <NavigationContainer>
+        <Stack.Navigator initialRoutename="SignupScreen">
 
-        <Stack.Screen name="ResolveAuth" options={{headerShown: false}} component={ResolveAuth}/>
-        <Stack.Screen name="Signup" options={{headerShown: false}} component={SignupScreen}/>
-        <Stack.Screen name="Account" component={AccountScreen}  />
-        <Stack.Screen name="Signin" component={SigninScreen} options={{headerShown: false}}/>
-        <Stack.Screen name="TrackCreate" component={TrackCreateScreen} />
-        <Stack.Screen name="TrackDetail" component={TrackDetailScreen} />
-        <Stack.Screen name="TrackList" component={TrackListScreen} />
-        <Stack.Screen name="MainFlow" component={MainFlowScreen} />
+          <Stack.Screen name="ResolveAuth" options={{headerShown: false}} component={ResolveAuth}/>
+          <Stack.Screen name="Signup" options={{headerShown: false}} component={SignupScreen}/>
+          <Stack.Screen name="Account" component={AccountScreen}  />
+          <Stack.Screen name="Signin" component={SigninScreen} options={{headerShown: false}}/>
+          <Stack.Screen name="TrackCreate" component={TrackCreateScreen} />
+          <Stack.Screen name="TrackDetail" component={TrackDetailScreen} />
+          <Stack.Screen name="TrackList" component={TrackListScreen} />
+          <Stack.Screen name="MainFlow" component={MainFlowScreen} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 };
 

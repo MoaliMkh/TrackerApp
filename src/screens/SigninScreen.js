@@ -12,7 +12,7 @@ const SigninScreen = ({navigation}) => {
 
     const {state, signin, clearError} = useContext(AuthContext);
 
-    const unsubscribe = navigation.addListener('blur', () => {clearError()});
+    navigation.addListener('blur', () => {clearError()});
 
     return (
         <View style={styles.view}>

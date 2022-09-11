@@ -50,7 +50,7 @@ const signin = (dispatch) => {
             const response = await TrackerAPI.post('/signin', {email, password});
             await AsyncStorage.setItem('token', response.data.token);
             dispatch({type: 'signin', payload: response.data.token});
-            navigation.navigate('TrackList');
+            navigation.navigate('MainFlow');
         }
         catch(err){
             dispatch({type: 'add_error', payload: 'Something went wrong with the signin process'})
