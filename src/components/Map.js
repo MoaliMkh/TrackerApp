@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {Text, StyleSheet} from 'react-native';
 import MapView, {Polyline} from "react-native-maps";
+
 
 const Map = () => {
 
@@ -15,11 +16,14 @@ const Map = () => {
                 longitude: -122.03121 + 0.001 * i});
         }
     }
+
+
+
+
     return (
         <MapView style={styles.Map} 
             initialRegion={{latitude: 37.33233, longitude: -122.03121,
-            latitudeDelta: 0.01, longitudeDelta: 0.01}}
-        >
+            latitudeDelta: 0.01, longitudeDelta: 0.01}}>
             <Polyline coordinates={points}/> 
             
         </MapView>            
