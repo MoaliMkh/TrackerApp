@@ -24,6 +24,8 @@ const Map = () => {
         <MapView style={styles.Map} 
             initialRegion={{latitude: 37.33233, longitude: -122.03121,
             latitudeDelta: 0.01, longitudeDelta: 0.01}}
+            region={{"accuracy": 100, "altitude": 0, "altitudeAccuracy": -1, "heading": 258.19, "latitude": 35.689198, "longitude": 51.388973, "speed": 3.84}}
+            showsUserLocation={true}
             >
             <Polyline coordinates={points}/> 
             
