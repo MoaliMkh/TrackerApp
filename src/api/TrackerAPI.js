@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://base.loca.lt'
+    baseURL: 'https://good-tiger-2.loca.lt'
 });
