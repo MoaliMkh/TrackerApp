@@ -3,25 +3,26 @@ import {View, Text, StyleSheet} from 'react-native';
 import Map from '../components/Map'
 import { SafeAreaView } from "react-navigation";
 import Geolocation from '@react-native-community/geolocation';
-import '../ـMockLocation';
+// import '../ـMockLocation';
 
 
 
 const TrackCreateScreen = () => {
 
-    Geolocation.getCurrentPosition(info => console.log(info));
-
-
-    const startWatching = () => {
-        try{
-            Geolocation.requestAuthorization("always");
-        }
-        catch (err) {
-            console.log(err)
+    Geolocation.watchPosition(info => console.log(info))
     
-        };
-    } 
-     useEffect (() => {startWatching()}, []);
+
+
+    // const startWatching = () => {
+    //     try{
+    //         Geolocation.requestAuthorization("always");
+    //     }
+    //     catch (err) {
+    //         console.log(err)
+    
+    //     };
+    // } 
+    //  useEffect (() => {startWatching()}, []);
        
       
     
