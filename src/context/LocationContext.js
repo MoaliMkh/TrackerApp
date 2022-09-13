@@ -1,19 +1,18 @@
 import createDataContext from "./createDataContext";
-import Geolocation from "@react-native-community/geolocation";
 
 const locationReducer = (state, action) => {
     switch(action.type){
-        case 'add_location':
-            return {...state, currentLocation: action.payload}
-        case 'start_record':
-            
-            return {...state, recording: true}
+
+        case 'start_record':            
+            console.log(state.locations.length);
+            return {...state, recording: true, currentLocation: action.payload, locations:[...state.locations, action.payload]}
+
         case 'stop_record':
             return {...state, recording: false}
-        // case 'add_location':
-        //     return {...state, locations:[...state.locations, action.payload]}
+
         case 'change_name':
             return {...state, name: action.payload}
+
         default:
             return state
     }
@@ -25,10 +24,9 @@ const changeName = dispatch => {
     }
 }
 const startRecording = dispatch => {
-    return () => {
-        dispatch({type: 'start_record'});
-
-
+    return (location) => {
+        dispatch({type: 'start_record', payload: location});
+                
     }
 };
 
@@ -38,17 +36,7 @@ const stopRecording = dispatch => {
     }
 };
 
-const addLocation = dispatch => {
-    return (location) => {
-        console.log("TRACKING...");
-        dispatch({type: 'add_location', payload: location})
-        // if(recording){
-        //     // setLocationTrackID(sub)
-        //     dispatch({type: 'add_location', payload: location})
-        // }
-    }
-}
 
 export const {Context, Provider} = createDataContext (locationReducer, 
-    {startRecording, stopRecording, addLocation, changeName}, {name: '', recording: false, locations: [], currentLocation: null} );
+    {startRecording, stopRecording, changeName}, {name: '', recording: false, locations: [], currentLocation: null} );
 

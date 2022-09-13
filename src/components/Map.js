@@ -27,10 +27,10 @@ const Map = () => {
     return (
         <MapView style={styles.Map} 
             initialRegion={{...currentLocation.coords, latitudeDelta: 0.01, longitudeDelta: 0.01}}
-            // region={{...currentLocation.coords,
-                //latitudeDelta: 0.01, longitudeDelta: 0.01}}
+            region={{...currentLocation.coords,
+                latitudeDelta: 0.01, longitudeDelta: 0.01}}
             // region={{"accuracy": 100, "altitude": 0, "altitudeAccuracy": -1, "heading": 258.19, "latitude": 35.689198, "longitude": 51.388973, "speed": 3.84}}
-            // showsUserLocation={true}
+            showsUserLocation={true}
             >
         <Circle center={currentLocation.coords} radius={50} 
         strokeColor="rgba(158, 158, 255, 1.0)" fillColor="rgba(158, 158, 255, 0.3)"/>
