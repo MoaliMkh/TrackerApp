@@ -44,13 +44,13 @@ const changeLocationTrackID = dispatch => {
 const stopRecording = dispatch => {
     return (locationTrackID) => {
         Geolocation.clearWatch(locationTrackID);
-        try{
-        Geolocation.stopObserving();
-        }
-        catch(err){
-            console.log(err)
+        Geolocation.stopObserving()
+        // try{
+        // }
+        // catch(err){
+        //     console.log(err)
 
-        }
+        // }
 
         dispatch({type: 'stop_record'});     
     }
