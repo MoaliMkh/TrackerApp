@@ -17,11 +17,8 @@ const fetchTracks = (dispatch) => {
 }
 
 const createTracks = dispatch => {
-    return async (name, locations) => {
-        console.log(name, locations.length);
-        await TrackerAPI.post('/track', {name, locations});
-
-        dispatch({type: 'test'});
+    return (name, locations) => {
+        console.log(name, locations);
     }
 
 };

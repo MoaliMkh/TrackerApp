@@ -7,7 +7,6 @@ import Geolocation from "@react-native-community/geolocation";
 
 const TrackForm = (props) => {
     const {state, changeName, stopRecording, locationTrackID} = useContext(LocationContext);
-    console.log(state.recording)
 
     const [saveTrack] = useSaveTrack();
 

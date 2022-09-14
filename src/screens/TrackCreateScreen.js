@@ -9,7 +9,7 @@ import TrackForm from "../components/TrackForm";
 
 const TrackCreateScreen = ({navigation}) => {
 
-    const {startRecording, state:{recording, locationTrackID}, changeLocationTrackID} = useContext(LocationContext);
+    const {startRecording, state:{ locationTrackID}, changeLocationTrackID} = useContext(LocationContext);
     // if(!recording){
     //      console.log(recording);
     // }
@@ -25,8 +25,7 @@ const TrackCreateScreen = ({navigation}) => {
             <Map /> 
 
             <TrackForm callback={() => {const sub = Geolocation.watchPosition((location) => startRecording(location));
-                changeLocationTrackID(sub);
-                console.log(recording)}}/>
+                changeLocationTrackID(sub)}} navigation={navigation}/>
             
         </SafeAreaView>
     );
