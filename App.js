@@ -12,6 +12,8 @@ import MainFlowScreen from './src/screens/MainFlowScreen';
 import {Provider as AuthProvider} from './src/context/AuthContext';
 import ResolveAuth from './src/screens/ResolveAuth';
 import {Provider as LocationProvider} from './src/context/LocationContext';
+import {Provider as TrackProvider} from './src/context/TrackContext';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -39,10 +41,12 @@ const App = () => {
 export default () => {
 
   return (
-    <LocationProvider>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </LocationProvider>
+    <TrackProvider>
+      <LocationProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </LocationProvider>
+    </TrackProvider>
   );
 };

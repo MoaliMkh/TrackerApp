@@ -9,18 +9,25 @@ import TrackForm from "../components/TrackForm";
 
 const TrackCreateScreen = ({navigation}) => {
 
-    const [locationTrackID, setLocationTrackID] = useState(null);
-    const {startRecording} = useContext(LocationContext);
-    
+    const {startRecording, state:{recording, locationTrackID}, changeLocationTrackID} = useContext(LocationContext);
+    // if(!recording){
+    //      console.log(recording);
+    // }
     navigation.addListener('blur', () => {Geolocation.clearWatch(locationTrackID)});
+
+    // console.log(recording);
+    // navigation.addListener('blur', () => {Geolocation.clearWatch(locationTrackID)});
+    
     
     return (
         <SafeAreaView forceInset={{top: 'always'}}>
             <Text>Create a Track</Text>
             <Map /> 
 
-            <TrackForm callback={() => {const sub = Geolocation.watchPosition((location) => startRecording(location), {timeout: 1000, distanceFilter: 10});
-                setLocationTrackID(sub)}}/>
+            <TrackForm callback={() => {const sub = Geolocation.watchPosition((location) => startRecording(location));
+                changeLocationTrackID(sub);
+                console.log(recording)}}/>
+            
         </SafeAreaView>
     );
 };

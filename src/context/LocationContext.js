@@ -1,4 +1,6 @@
 import createDataContext from "./createDataContext";
+import Geolocation from '@react-native-community/geolocation';
+
 
 const locationReducer = (state, action) => {
     switch(action.type){
@@ -9,6 +11,9 @@ const locationReducer = (state, action) => {
 
         case 'stop_record':
             return {...state, recording: false}
+        
+        case 'change_location':
+            return {...state, locationTrackID: action.payload}
 
         case 'change_name':
             return {...state, name: action.payload}
@@ -29,14 +34,29 @@ const startRecording = dispatch => {
                 
     }
 };
+const changeLocationTrackID = dispatch => {
+    return (sub) => {
+        dispatch({type: 'change_location', payload: sub});
+                
+    }
+};
 
 const stopRecording = dispatch => {
-    return () => {
+    return (locationTrackID) => {
+        Geolocation.clearWatch(locationTrackID);
+        try{
+        Geolocation.stopObserving();
+        }
+        catch(err){
+            console.log(err)
+
+        }
+
         dispatch({type: 'stop_record'});     
     }
 };
 
 
 export const {Context, Provider} = createDataContext (locationReducer, 
-    {startRecording, stopRecording, changeName}, {name: '', recording: false, locations: [], currentLocation: null} );
+    {startRecording, stopRecording, changeName, changeLocationTrackID}, {name: '', recording: false, locations: [], currentLocation: null, locationTrackID: null} );
 
